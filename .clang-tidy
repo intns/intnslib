@@ -1,0 +1,26 @@
+Checks: >
+    -*,
+    google-*,
+    modernize-*,
+    readability-*,
+    performance-*,
+    bugprone-*,
+    misc-*,
+    cppcoreguidelines-*,
+    clang-analyzer-*,
+    portability-*,
+    hicpp-*
+
+WarningsAsErrors: ''
+HeaderFilterRegex: ''
+AnalyzeTemporaryDtors: false
+FormatStyle: none
+CheckOptions:
+    - key:             modernize-use-nullptr.NullMacros
+        value:           'NULL'
+    - key:             modernize-use-auto.MinTypeNameLength
+        value:           '5'
+    - key:             readability-identifier-naming.VariableCase
+        value:           camelCase
+    - key:             readability-identifier-naming.FunctionCase
+        value:           CamelCase
