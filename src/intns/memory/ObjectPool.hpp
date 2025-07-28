@@ -245,10 +245,11 @@ class ObjectPool {
 };
 
 /**
- * @brief RAII wrapper for managing objects leased from a Pool.
+ * @brief RAII wrapper for managing leased ObjectPool objects
  *
- * PoolLease acquires a Pool object on creation and releases it on destruction
- * unless explicitly released; guarantees exception safety and prevents leaks.
+ * PoolLease acquires an ObjectPool object on creation and releases it on
+ * destruction unless explicitly released; guarantees exception safety and
+ * prevents leaks.
  *
  * @tparam Pool The ObjectPool providing value_type, take(), and add() methods.
  */

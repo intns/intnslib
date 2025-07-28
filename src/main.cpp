@@ -25,11 +25,10 @@ struct ObjectPolicy {
   }
 };
 
-int main(int argc, char** argv) {
-  _CRT_UNUSED(argc);
-  _CRT_UNUSED(argv);
-
+void test_object_pool() {
   using namespace intns::memory;
+
+  // Test with default policies
   {
     ObjectPool<Object> pool;
     pool.add(Object(1, "Object 1"));
@@ -40,6 +39,8 @@ int main(int argc, char** argv) {
       std::cout << "Leased object value: " << lease->value << std::endl;
     }
   }
+
+  // Test with custom policies
   {
     ObjectPool<Object, ObjectPolicy> pool_with_policy;
     pool_with_policy.add(Object(2, "Object 2"));
@@ -50,6 +51,20 @@ int main(int argc, char** argv) {
       std::cout << "Leased object value with policy: " << lease->value << std::endl;
     }
   }
+}
+
+void test_stack_allocator() {
+  using namespace intns::memory;
+  StackAllocator stack(4);
+  int* allocated = stack.alloc_t<int>();
+}
+
+int main(int argc, char** argv) {
+  _CRT_UNUSED(argc);
+  _CRT_UNUSED(argv);
+
+  test_object_pool();
+  test_stack_allocator();
 
   return 0;
 }
